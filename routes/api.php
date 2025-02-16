@@ -11,6 +11,9 @@ use App\Http\Controllers\ChatHistoryController;
 //     // "auth:sanctum" kollar om du har rätt tillgång 
 // })->middleware('auth:sanctum');
 
+// Route::post('/chat', [ChatbotController::class, 'chat']);
+
+
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/chat', [ChatHistoryController::class, 'chat']);
@@ -21,7 +24,5 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
-
-// Route::post('/chat', [ChatbotController::class, 'chat']);
 
 Route::post('/chat', [ChatHistoryController::class, 'chat'])->middleware('auth:sanctum');
